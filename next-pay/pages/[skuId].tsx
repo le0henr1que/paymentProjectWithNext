@@ -2,6 +2,8 @@ import React from "react";
 import Stripe from 'stripe';
 import { GetStaticPaths, GetStaticProps } from 'next'
 
+import CheckoutButton from "../components/checkoutButton";
+
 import stripeConfig from '../config/stripe'
 import Link from "next/link";
 
@@ -60,6 +62,7 @@ const Product: React.FC<Props> = ({sku}) => {
             {sku.images && <img src={sku.images}/>}
             <h1>{sku.name}</h1>
             <h2>{sku.attributes}</h2>
+            <CheckoutButton sku={sku.default_price} itemName={sku.name}></CheckoutButton>
             <Link href="/">Go Back</Link>
         </div>
         )
